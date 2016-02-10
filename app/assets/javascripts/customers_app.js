@@ -61,9 +61,19 @@ app.controller("CustomerSearchController", [
 app.controller("CustomerDetailController", [
           "$scope","$routeParams","$resource",
   function($scope,$routeParams, $resource) {
-
+    $scope.customerId = $routeParams.id;
     var customerId  = $routeParams.id;
     var Customer    = $resource('/customers/:customerId.json');
-    $scope.customer = Customer.get({"customerId": customerId});
+    $scope.customer = Customer.get({"customerId": $scope.customerId});
+  }
+]);
+
+app.controller("CustomerCreditCardController", [
+          "$scope", "$resource",
+  function($scope, $resource) {
+    var CreditCardInfo = $resource('/fake_billing.json')
+    $scope.setCardholderId = function(cardholderId) {
+      $scope.creditCard = CreditCardInfo.get({"cardholder_id": cardholderId})
+    }
   }
 ]);
