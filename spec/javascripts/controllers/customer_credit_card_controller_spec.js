@@ -32,11 +32,11 @@ describe("CustomerCreditCardController", function() {
     });
 
     it("when setCardholderId is called, hits back-end", function() {
-      scope.setCardholderId(cardholderId); // (1)
-      expect(scope.creditCard).toBeDefined(); // (2)
-      expect(scope.creditCard.lastFour).not.toBeDefined();// (3)
-      httpBackend.flush(); // (4)
-      expect(scope.creditCard).toEqualData(cardInfo); // (5)
+      scope.setCardholderId(cardholderId); 
+      expect(scope.creditCard).toBeDefined(); 
+      expect(scope.creditCard.lastFour).not.toBeDefined();
+      httpBackend.flush(); 
+      expect(scope.creditCard).toEqualData(cardInfo); 
     });
   });
 });
